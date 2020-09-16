@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ibm.developer</groupId>
-	<artifactId>hello-service-java-on-kube-101-lab3</artifactId>
+	<artifactId>hello-service-java-on-kube-101-lab4</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hello-service-java-on-kube-101-lab3</name>
+	<name>hello-service-java-on-kube-101-lab4</name>
 	<description>Example project for running an application on Kubernetes</description>
 
 	<properties>
@@ -25,10 +25,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-actuator</artifactId> -->
-<!-- 		</dependency> -->
+<!-- 		<dependency> 
+ 			<groupId>org.springframework.boot</groupId> 
+ 			<artifactId>spring-boot-starter-actuator</artifactId>
+ 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
