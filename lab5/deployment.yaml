@@ -16,10 +16,29 @@ spec:
     spec:
       containers:
       - name: hello-service
-        image: [MY-NAMESPACE]/[MY-IMAGE-NAME]:[MY-TAG-NUMBER]
+        image: us.icr.io/[my-ibm-cloud-id]/hello-java-on-kube-101:3
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        env:
+          - name: ENVIRONMENT_MESSAGE
+            value: ""
+          - name: db-password
+            valueFrom:
+              secretKeyRef:
+                name: datasource-connection-info
+                key: password
+          - name: my-secret-message
+            valueFrom:
+              secretKeyRef:
+                name: datasource-connection-info
+                key: my-secret
+        args: ["--environment.message=$(ENVIRONMENT_MESSAGE)", "--spring.datasource.password=$(db-password)", "--my.secret.message=$(my-secret-message)"]
+        volumeMounts:
+        - name: h2-data
+          mountPath: /volume-mount
+        - name: application-properties
+          mountPath: /application/config
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
@@ -35,3 +54,14 @@ spec:
           periodSeconds: 3
           failureThreshold: 1 
       terminationGracePeriodSeconds: 15
+      volumes:
+      - name: h2-data
+        hostPath:
+          type: DirectoryOrCreate
+          path: /tmp
+      - name: application-properties
+        configMap:
+          name: spring-config
+          items:
+          - key: application.properties 
+            path: application.properties

@@ -12,15 +12,4 @@ public class HelloJavaOnKube101ServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HelloJavaOnKube101ServiceApplication.class, args);
 	}
-
-	@Bean
-	public TaskExecutor taskExecutor() {
-		ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-		taskExecutor.setCorePoolSize(2);
-		taskExecutor.setMaxPoolSize(2);
-//		taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
-//		taskExecutor.setAwaitTerminationSeconds(10);
-		taskExecutor.initialize();
-		return taskExecutor;
-	}
 }
