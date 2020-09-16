@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-service
-        image: [MY-NAMESPACE]/[MY-IMAGE-NAME]:[MY-TAG-NUMBER]
+        image: us.icr.io/[my-ibm-cloud-id]/hello-java-on-kube-101:1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

@@ -16,7 +16,22 @@ spec:
     spec:
       containers:
       - name: hello-service
-        image: [MY-NAMESPACE]/[MY-IMAGE-NAME]:[MY-TAG-NUMBER]
+        image: us.icr.io/[my-ibm-cloud-id]/hello-java-on-kube-101:1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+#        livenessProbe:
+#          httpGet:
+#            path: /actuator/health/liveness
+#            port: 8080
+#          initialDelaySeconds: 15
+#          periodSeconds: 3
+#          failureThreshold: 2
+#        readinessProbe:
+#          httpGet:
+#            path: /actuator/health/readiness
+#            port: 8080
+#          initialDelaySeconds: 15
+#          periodSeconds: 3
+#          failureThreshold: 1 
+#      terminationGracePeriodSeconds: 15
