@@ -12,14 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
-	@Value("${environment.message}")
-	private String environmentMessage;
-	private TaskExecutor taskExecutor;
-
-	public Controller(TaskExecutor taskExecutor) {
-		this.taskExecutor = taskExecutor;
-	}
-
 	@GetMapping
 	public String helloWorld() {
 		LOGGER.info("In helloWorld");
@@ -30,27 +22,5 @@ public class Controller {
 	public String helloName(@PathVariable String name) {
 		LOGGER.info("In helloName: " + name);
 		return String.format("Hello, %s!", name);
-	}
-
-	@GetMapping("/environment")
-	public String environment() {
-		return environmentMessage;
-	}
-
-	@GetMapping("/longRunningProcess")
-	public String longRunningProcess() throws InterruptedException {
-		LOGGER.info("Process Started!");
-		taskExecutor.execute(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Thread.currentThread().sleep(5000);
-					LOGGER.info("Process Completed!");
-				} catch (InterruptedException e) {
-					LOGGER.info("Process Didn't Complete!");
-				}
-			}
-		});
-		return "Process Initiated";
 	}
 }

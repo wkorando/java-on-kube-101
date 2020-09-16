@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-service-deployment
+  labels:
+    app: hello-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-service
+  template:
+    metadata:
+      labels:
+        app: hello-service
+    spec:
+      containers:
+      - name: hello-service
+        image: [MY-NAMESPACE]/[MY-IMAGE-NAME]:[MY-TAG-NUMBER]
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          failureThreshold: 2
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          failureThreshold: 1 
+      terminationGracePeriodSeconds: 15
