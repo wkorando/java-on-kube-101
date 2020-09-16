@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
-	@Value("${environment.message}")
-	private String environmentMessage;
 	private TaskExecutor taskExecutor;
 
 	public Controller(TaskExecutor taskExecutor) {
@@ -30,11 +28,6 @@ public class Controller {
 	public String helloName(@PathVariable String name) {
 		LOGGER.info("In helloName: " + name);
 		return String.format("Hello, %s!", name);
-	}
-
-	@GetMapping("/environment")
-	public String environment() {
-		return environmentMessage;
 	}
 
 	@GetMapping("/longRunningProcess")
