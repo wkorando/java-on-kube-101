@@ -16,22 +16,22 @@ spec:
     spec:
       containers:
       - name: hello-service
-        image: us.icr.io/[my-ibm-cloud-id]/hello-java-on-kube-101:[my-tag]
+        image: us.icr.io/billydeveloperadvocado/hello-java-on-kube-101:3
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-#        livenessProbe:
-#          httpGet:
-#            path: /actuator/health/liveness
-#            port: 8080
-#          initialDelaySeconds: 15
-#          periodSeconds: 3
-#          failureThreshold: 2
-#        readinessProbe:
-#          httpGet:
-#            path: /actuator/health/readiness
-#            port: 8080
-#          initialDelaySeconds: 15
-#          periodSeconds: 3
-#          failureThreshold: 1 
-#      terminationGracePeriodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          failureThreshold: 2
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 3
+          failureThreshold: 1 
+      terminationGracePeriodSeconds: 15
