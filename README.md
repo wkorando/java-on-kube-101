@@ -4,7 +4,7 @@
 
 In this lab we will setup a free Kuberentes cluster running on IBM Cloud (IKS).
 
-To start this lab click [here](https://labs.cognitiveclass.ai/tools/theiadocker/?md_instructions_url=https%3A%2F%2Fcf-courses-data.s3.us.cloud-object-storage.appdomain.cloud%2FIBMDeveloperSkillsNetwork-JV0104EN-SkillsNetwork%2Flabs%2Flab2_deploy_to_k8s%2Finstructional-labs.md).
+To start this lab click [here](https://labs.cognitiveclass.ai/tools/theiadocker/?md_instructions_url=https%3A%2F%2Fcf-courses-data.s3.us.cloud-object-storage.appdomain.cloud%2FIBMDeveloperSkillsNetwork-JV0104EN-SkillsNetwork%2Flabs%2Flab1_deploy_to_k8s%2Finstructional-labs.md).
 
 ## Lab 2 Deploy to Kubernetes
 
